@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229074541) do
+ActiveRecord::Schema.define(version: 20161229082532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",                   null: false
+    t.string   "image"
+    t.integer  "quantity",   default: 0
+    t.decimal  "price",                  null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "placed_on",  null: false
+  end
+
+  create_table "selected_items", force: :cascade do |t|
+    t.integer  "itemable_id"
+    t.string   "itemable_type"
+    t.integer  "quantity",      default: 1, null: false
+    t.decimal  "price",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["itemable_id", "itemable_type"], name: "index_selected_items_on_itemable_id_and_itemable_type", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                 null: false
