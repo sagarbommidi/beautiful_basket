@@ -14,9 +14,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = item
+  end
+
+  def update
+    if item.update_attributes(item_params)
+      redirect_to admin_dashboard_path(), notice: 'Item Updated successfully'
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:name, :price, :image, :quantity)
+  end
+
+  def item
+    @item ||= Item.find(params.require(:id))
   end
 end
