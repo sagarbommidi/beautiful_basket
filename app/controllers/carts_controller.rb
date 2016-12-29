@@ -6,6 +6,15 @@ class CartsController < ApplicationController
     redirect_to cart_path
   end
 
+  def update_quantity
+    selected_item = SelectedItem.find(params.require(:cart_id))
+    if selected_item.update_attributes(update_params)
+      redirect_to cart_path, notice: 'Cart updated successfully'
+    else
+      redirect_to cart_path, notice: selected_item.errors.full_messages.join(', ')
+    end
+  end
+
   def index
     @cart_items = cart_items
   end
@@ -18,5 +27,9 @@ class CartsController < ApplicationController
 
   def cart_item_params
     params.permit(:item_id, :price)
+  end
+
+  def update_params
+    params.require(:selected_item).permit(:quantity)
   end
 end

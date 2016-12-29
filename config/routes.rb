@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :index]
   resources :carts, only: [] do
     post :add_item, on: :collection
+    put :update_quantity, param: :cart_item_id # We can place in a new controller selected_item
   end
   get '/cart', to: 'carts#index'
   resources :static, only: [:index]
