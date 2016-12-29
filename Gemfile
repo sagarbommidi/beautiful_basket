@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'bootstrap-sass'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry'
