@@ -1,0 +1,15 @@
+<div class='row'>
+  <% items.each do |item| %>
+    <div class='col-md-3 col-sm-4 col-xs-12 item-box'>
+      <%= image_tag('sample_item.jpg', size: '250x260', alt: 'Item') %>
+      Name: <%= item.name %>
+      <div class='row'>
+        <div class='col-sm-6'>
+          Price: <%= item.price %><br/>
+          Available: <%= item.quantity %>
+        </div>
+      </div>
+      <hr/>
+    </div>
+  <% end %>
+</div>

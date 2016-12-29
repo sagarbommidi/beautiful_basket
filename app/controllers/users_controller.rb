@@ -1,6 +1,7 @@
 class UsersController < Clearance::UsersController
 
   def dashboard
+    @items = Item.available
   end
 
   private

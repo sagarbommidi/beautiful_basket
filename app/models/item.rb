@@ -3,4 +3,5 @@ class Item < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 0}
 
   scope :by_quantity, -> { order(quantity: :asc) }
+  scope :available, -> { where('quantity > ?', 0) }
 end
