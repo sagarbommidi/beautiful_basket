@@ -19,6 +19,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap-sass'
+gem 'clearance'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
