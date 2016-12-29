@@ -1,0 +1,24 @@
+<h4>Items in the Inventory </h4>
+<hr/>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Name of the Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <% items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td>$<%= item.price %></td>
+      <td><%= item.quantity %></td>
+      <td>
+        <%= link_to "Edit", edit_item_path(item) %> | 
+        <%= link_to "Delete", item_path(item), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

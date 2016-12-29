@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   resources :users, only: :create
   resources :admins, only:[]
+  resources :items
   resources :static, only: [:index]
 end
