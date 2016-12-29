@@ -26,6 +26,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item.destroy
+    redirect_to admin_dashboard_path(), notice: 'Item Deleted successfully'
+  end
+
   private
 
   def item_params
