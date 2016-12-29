@@ -1,5 +1,9 @@
 <%= link_to "Continue shopping", user_dashboard_path(), class: 'btn btn-success pull-right' %>
-<h4>Details of the Cart </h4>
+<% if @cart_items.count > 0 %>
+  <%= link_to "Order Items", orders_path(), method: :post, class: 'btn btn-success pull-right order-btn' %>
+<% end %>
+
+<h4>Details of the Cart (<%= @cart_items.count %>)</h4>
 <hr/>
 <table class="table table-hover table-bordered">
   <thead>

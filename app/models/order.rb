@@ -4,6 +4,11 @@ class Order < ApplicationRecord
   has_many :order_items, as: :itemable, class_name: "SelectedItem"
   has_many :items, through: :order_items
   belongs_to :user
-  belongs_to :delivery_address
 
+  def total_price
+    order_items.inject(0) do |sum, item|
+      sum += item.price * item.quantity
+      sum
+    end
+  end
 end

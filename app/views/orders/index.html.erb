@@ -1,0 +1,21 @@
+<h4>Details of the Past Orders </h4>
+<hr/>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Plced on</th>
+      <th>No of Items</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+
+  <% current_user.orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.placed_on.strftime("%m/%d/%Y at %I:%M%p") %></td>
+      <td><%= order.order_items.count %></td>
+      <td>$<%= order.total_price %></td>
+    </tr>
+  <% end %>
+</table>
