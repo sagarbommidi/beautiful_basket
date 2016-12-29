@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161229082532) do
     t.string   "itemable_type"
     t.integer  "quantity",      default: 1, null: false
     t.decimal  "price",                     null: false
+    t.integer  "item_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["itemable_id", "itemable_type"], name: "index_selected_items_on_itemable_id_and_itemable_type", using: :btree

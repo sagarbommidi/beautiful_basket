@@ -8,6 +8,13 @@
           Price: <%= item.price %><br/>
           Available: <%= item.quantity %>
         </div>
+        <div class='col-sm-6'>
+          <% if current_user.cart.items.include?(item) %>
+            <%= link_to "Remove", 'javascript:void(0)', method: :post, class: 'btn btn-default' %>
+          <% else %>
+            <%= link_to "Add to Cart", add_item_carts_path(item_id: item.id, price: item.price), method: :post, class: 'btn btn-success' %>
+          <% end %>
+        </div>
       </div>
       <hr/>
     </div>

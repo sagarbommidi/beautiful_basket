@@ -5,6 +5,7 @@ class CreateSelectedItems < ActiveRecord::Migration[5.0]
       t.string  :itemable_type
       t.integer :quantity, null: false, default: 1
       t.decimal :price, null: false
+      t.integer :item_id
       t.timestamps
     end
 

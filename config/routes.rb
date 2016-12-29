@@ -14,5 +14,9 @@ Rails.application.routes.draw do
   resources :users, only: :create
   resources :admins, only:[]
   resources :items
+  resources :carts, only: [] do
+    post :add_item, on: :collection
+  end
+  get '/cart', to: 'carts#index'
   resources :static, only: [:index]
 end
