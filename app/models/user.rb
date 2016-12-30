@@ -13,7 +13,9 @@ class User < ApplicationRecord
       selected_item.itemable = new_order
       selected_item.save
     end
-    UserMailer.order_confirmation(self, new_order).deliver_now
+    if Rails.env.development?
+      UserMailer.order_confirmation(self, new_order).deliver_now
+    end
   end
 
   private
